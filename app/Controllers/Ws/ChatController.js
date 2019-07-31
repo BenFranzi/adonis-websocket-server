@@ -7,10 +7,11 @@ class ChatController {
     this.socket = socket
     this.request = request
     console.log('user joined with %s socket id', socket.id);
-    setTimeout(this.emitCommand.bind(this), 10000);
+    setTimeout(this.emitCommand.bind(this), 30000);
   }
 
-  onMessage (message) {
+  onConnect (message) {
+    console.log('\x1b[44m%s\x1b[0m', `connect received`);
     // this.socket.broadcastToAll('message', message)
   }
 
@@ -18,6 +19,15 @@ class ChatController {
     console.log('\nsocket:', this.socket.id, '\nport:  ', this.socket.id.charCodeAt(this.socket.id.length - 1),'\n');
     this.socket.broadcastToAll('port', this.socket.id.charCodeAt(this.socket.id.length - 1));
   }
+
+  onAcceptUser (message) {
+    console.log('User accept message received');
+  }
+  
+  onRejectUser (message) {
+    console.log('User reject message received');
+  }
+
 
   emitCommand() {
     console.log('sending command');
@@ -31,6 +41,7 @@ class ChatController {
       timeout_s: 30, //0 is no timeout, time in seconds
       cmd_type: 'UserAcceptCancel',
     });
+    setTimeout(this.emitCommand.bind(this), 30000);
   }
 }
 
