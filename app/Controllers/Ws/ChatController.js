@@ -15,7 +15,7 @@ class ChatController {
   }
 
   onPort (message) {
-    console.log('\nfrom:  ', message.printerId, '\nsocket:', this.socket.id, '\nport:  ', this.socket.id.charCodeAt(this.socket.id.length - 1),'\n');
+    console.log('\nsocket:', this.socket.id, '\nport:  ', this.socket.id.charCodeAt(this.socket.id.length - 1),'\n');
     this.socket.broadcastToAll('port', this.socket.id.charCodeAt(this.socket.id.length - 1));
   }
 
