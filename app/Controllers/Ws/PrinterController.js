@@ -1,8 +1,6 @@
 'use strict'
 
-class ChatController {
-  userId;
-
+class PrinterController {
   constructor ({ socket, request }) {
     this.socket = socket
     this.request = request
@@ -45,4 +43,4 @@ class ChatController {
   }
 }
 
-module.exports = ChatController
+module.exports = PrinterController

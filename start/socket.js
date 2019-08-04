@@ -19,4 +19,4 @@ const Ws = use('Ws')
 //   console.log('user joined with %s socket id', socket.id)
 // })
 
-Ws.channel('printer', 'ChatController')
+Ws.channel('printer', 'PrinterController')
